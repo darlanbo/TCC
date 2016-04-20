@@ -2,15 +2,16 @@
 <?php 
  
 $login = $_POST['login'];
-$senha = MD5($_POST['senha']);
-$connect = mysql_connect('localhost','13100213','');    <!-- ('nome_do_servidor','nome_de_usuario','senha') -->
-$db = mysql_select_db('usuarios');        <!-- ('nome_do_banco_de_dados') -->
+$senha = md5($_POST['senha']);
+
+$connect = mysql_connect('bdsql01.stoinacio.com.br','13100213','13100213');
+$db = mysql_select_db('13100213');
 $query_select = "SELECT login FROM usuarios WHERE login = '$login'";
 $select = mysql_query($query_select,$connect);
 $array = mysql_fetch_array($select);
 $logarray = $array['login'];
 
-echo ">>>>>>>>>>>>>>>>>>>>>>>>>".$login
+echo ">>>>>>>>>>>>>>>>>>>>>>>>>".$logarray;
  
     if($login == "" || $login == null){
         echo"<script language='javascript' type='text/javascript'>alert('O campo login deve ser preenchido');window.location.href='cadastro.html';</script>";
@@ -33,3 +34,4 @@ echo ">>>>>>>>>>>>>>>>>>>>>>>>>".$login
             }
         }
 ?>
+
